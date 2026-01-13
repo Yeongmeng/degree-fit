@@ -1,5 +1,22 @@
 import React, { useMemo, useState } from "react";
 
+function openFeedbackEmail() {
+    const subject = encodeURIComponent("Degree Fit feedback");
+    const body = encodeURIComponent(
+  `What felt accurate?
+
+  What felt off or confusing?
+
+  What degree are you studying and what year?
+
+  Any other comments:
+  `
+    );
+
+    window.location.href =
+      "mailto:tonyzhoutony@gmail.com?subject=" + subject + "&body=" + body;
+  }
+
 type DegreeProfileId =
   | "health"
   | "engineering"
@@ -728,6 +745,35 @@ export default function App() {
               </button>
             </div>
           </Card>
+
+          <Card>
+            <h3 style={{ marginTop: 0 }}>Help improve this</h3>
+
+            <p style={{ opacity: 0.85 }}>
+                If anything felt inaccurate, unclear, or surprisingly accurate,
+                this feedback is far more useful than a star rating.
+            </p>
+
+            <button
+                onClick={openFeedbackEmail}
+                style={{
+                padding: "10px 14px",
+                borderRadius: 12,
+                border: "1px solid #22304b",
+                background: "#0a1020",
+                color: "#e8eefc",
+                fontWeight: 700,
+                cursor: "pointer",
+                }}
+            >
+                Send feedback
+            </button>
+
+            <p style={{ marginTop: 8, opacity: 0.6, fontSize: 12 }}>
+                Opens your email app. No account required.
+            </p>
+            </Card>
+
         </div>
       )}
 
